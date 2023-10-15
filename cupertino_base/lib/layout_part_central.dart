@@ -13,110 +13,110 @@ class LayoutPartCentral extends StatefulWidget {
 
 class LayoutPartCentralState extends State<LayoutPartCentral> {
   GlobalKey _settingsButtonKey = GlobalKey();
-  String colo = "0";
+  static String colo = "0";
   @override
   Widget build(BuildContext context) {
     AppData appData = Provider.of<AppData>(context);
 
     return CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          leading: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CupertinoButton(
-                  padding: const EdgeInsets.all(0.0),
-                  onPressed: appData.toggleSidebarLeft,
-                  child: Icon(
-                    CupertinoIcons.sidebar_left,
-                    color: appData.isSidebarLeftVisible
-                        ? CupertinoColors.activeBlue
-                        : CupertinoColors.black,
-                    size: 24.0,
-                    semanticLabel: 'Text to announce in accessibility modes',
-                  )),
-              const SizedBox(width: 16),
-            ],
-          ),
-          middle: CupertinoButton(
-            key: _settingsButtonKey,
-            padding: const EdgeInsets.all(0.0),
-            onPressed: () {
-              WidgetPopover.showPopover(
-                  context: context,
-                  key: _settingsButtonKey,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            colo = "Negre";
-                            print("Opció 1 premuda");
+      navigationBar: CupertinoNavigationBar(
+        leading: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CupertinoButton(
+                padding: const EdgeInsets.all(0.0),
+                onPressed: appData.toggleSidebarLeft,
+                child: Icon(
+                  CupertinoIcons.sidebar_left,
+                  color: appData.isSidebarLeftVisible
+                      ? CupertinoColors.activeBlue
+                      : CupertinoColors.black,
+                  size: 24.0,
+                  semanticLabel: 'Text to announce in accessibility modes',
+                )),
+            const SizedBox(width: 16),
+          ],
+        ),
+        middle: CupertinoButton(
+          key: _settingsButtonKey,
+          padding: const EdgeInsets.all(0.0),
+          onPressed: () {
+            WidgetPopover.showPopover(
+                context: context,
+                key: _settingsButtonKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          colo = "Negre";
 
-                            WidgetPopover.hidePopover();
-                          },
-                          child: Text('Negre'),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            colo = "Vermell";
-                            print("Opció 2 premuda");
-                            WidgetPopover.hidePopover();
-                          },
-                          child: Text('Vermell'),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            colo = "Verd";
+                          WidgetPopover.hidePopover();
+                        },
+                        child: Text('Negre'),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          colo = "Vermell";
 
-                            print("Opció 1 premuda");
-                            WidgetPopover.hidePopover();
-                          },
-                          child: Text('Verd'),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            colo = "Blau";
-                            print("Opció 1 premuda");
-                            WidgetPopover.hidePopover();
-                          },
-                          child: Text('Blau'),
-                        ),
-                      ],
-                    ),
-                  ));
-            },
-            child: const Icon(
-              CupertinoIcons.settings,
-              color: CupertinoColors.black,
-              size: 24.0,
-              semanticLabel: 'Text to announce in accessibility modes',
-            ),
-          ),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CupertinoButton(
-                  padding: const EdgeInsets.all(0.0),
-                  onPressed: appData.toggleSidebarRight,
-                  child: Icon(
-                    CupertinoIcons.sidebar_right,
-                    color: appData.isSidebarRightVisible
-                        ? CupertinoColors.activeBlue
-                        : CupertinoColors.black,
-                    size: 24.0,
-                    semanticLabel: 'Text to announce in accessibility modes',
-                  )),
-              const SizedBox(width: 16),
-            ],
+                          WidgetPopover.hidePopover();
+                        },
+                        child: Text('Vermell'),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          colo = "Verd";
+
+                          WidgetPopover.hidePopover();
+                        },
+                        child: Text('Verd'),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          colo = "Blau";
+
+                          WidgetPopover.hidePopover();
+                        },
+                        child: Text('Blau'),
+                      ),
+                    ],
+                  ),
+                ));
+          },
+          child: const Icon(
+            CupertinoIcons.settings,
+            color: CupertinoColors.black,
+            size: 24.0,
+            semanticLabel: 'Text to announce in accessibility modes',
           ),
         ),
-        child: color(colo));
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CupertinoButton(
+                padding: const EdgeInsets.all(0.0),
+                onPressed: appData.toggleSidebarRight,
+                child: Icon(
+                  CupertinoIcons.sidebar_right,
+                  color: appData.isSidebarRightVisible
+                      ? CupertinoColors.activeBlue
+                      : CupertinoColors.black,
+                  size: 24.0,
+                  semanticLabel: 'Text to announce in accessibility modes',
+                )),
+            const SizedBox(width: 16),
+          ],
+        ),
+      ),
+      child: color(colo),
+    );
   }
 }
 
 Widget color(String n) {
-  if (n == "Negre") {
+  print(n);
+  if (n == 'Negre') {
     return const Padding(
       padding: const EdgeInsets.only(top: 50.0),
       child: Column(
@@ -127,7 +127,7 @@ Widget color(String n) {
       ),
     );
   }
-  if (n == "Vermell") {
+  if (n == 'Vermell') {
     return const Padding(
       padding: const EdgeInsets.only(top: 50.0),
       child: Column(
@@ -138,7 +138,7 @@ Widget color(String n) {
       ),
     );
   }
-  if (n == "Verd") {
+  if (n == 'Verd') {
     return const Padding(
       padding: const EdgeInsets.only(top: 50.0),
       child: Column(
@@ -149,7 +149,7 @@ Widget color(String n) {
       ),
     );
   }
-  if (n == "Blau") {
+  if (n == 'Blau') {
     return const Padding(
       padding: const EdgeInsets.only(top: 50.0),
       child: Column(
@@ -165,7 +165,7 @@ Widget color(String n) {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Central", style: TextStyle(color: Colors.blue)),
+          Text("Central", style: TextStyle(color: Colors.black)),
         ],
       ),
     );
